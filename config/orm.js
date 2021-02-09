@@ -30,16 +30,14 @@ const orm = {
     },
     // updateOne() seems to be good to go. Check back later and delete
     // comment if it's good to go
-    updateOne(table, devourVal, burgerName, cb){
+    updateOne(table, devourVal, condition, cb){
         let queryString = `UPDATE ${table}`;
-        queryString += 'SET devoured=';
-        queryString += devourVal;
-        queryString += 'WHERE burger_name=';
-        queryString += burgerName;
+        queryString += ' SET ';
+        queryString += objToSql(devourVal);
+        queryString += condition;
 
         connection.query(
-            queryString, [devourVal, burgerName],
-            (err, result) => {
+            queryString, (err, result) => {
                 if (err) throw err;
                 cb(result);
             }
