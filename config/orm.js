@@ -8,15 +8,10 @@ const orm = {
         })
     },
     // insertOne should be fine...I think?
-    insertOne(tableInput, burgerNameCol, devourCol, vals, cb){
+    insertOne(tableInput, vals, cb){
         let queryString = `INSERT INTO ${tableInput}`;
 
-        queryString += ' (';
-        queryString += burgerNameCol.toString();
-        queryString += ', '
-        queryString += devourCol.toString();
-        queryString += ') ';
-        queryString += 'VALUES (';
+        queryString += ' (burger_name, devoured) VALUES (';
         queryString += printQuestionMarks(vals.length);
         queryString += ') ';
 
@@ -79,4 +74,6 @@ const objToSql = (ob) => {
   
     // Translate array of strings to a single comma-separated string
     return arr.toString();
-  };
+};
+
+module.exports = orm;
