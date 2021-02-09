@@ -8,7 +8,7 @@ const orm = {
         })
     },
     // insertOne should be fine...I think?
-    insertOne(tableInput, burgerNameCol, devourCol, val, cb){
+    insertOne(tableInput, burgerNameCol, devourCol, vals, cb){
         let queryString = `INSERT INTO ${tableInput}`;
 
         queryString += ' (';
@@ -23,12 +23,27 @@ const orm = {
         connection.query(
             queryString, vals,
             (err, result) => {
-            if (err) throw err;
-            cb(result);
-        })
+                if (err) throw err;
+                cb(result);
+            }
+        )
     },
-    updateOne(){
+    // updateOne() seems to be good to go. Check back later and delete
+    // comment if it's good to go
+    updateOne(table, devourVal, burgerName, cb){
+        let queryString = `UPDATE ${table}`;
+        queryString += 'SET devoured=';
+        queryString += devourVal;
+        queryString += 'WHERE burger_name=';
+        queryString += burgerName;
 
+        connection.query(
+            queryString, [devourVal, burgerName],
+            (err, result) => {
+                if (err) throw err;
+                cb(result);
+            }
+        )
     }
 }
 
