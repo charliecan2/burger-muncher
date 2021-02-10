@@ -1,6 +1,6 @@
 const express = require('express');
 
-const PORT = process.env.PORT || 3300;
+const PORT = 3300;
 
 const app = express();
 
@@ -20,6 +20,6 @@ const routes = require('./controllers/burgers_controller');
 
 app.use(routes);
 
-app.connect(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Listening in on PORT: ${PORT}`);
 })

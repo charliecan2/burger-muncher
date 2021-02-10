@@ -1,6 +1,6 @@
 <h1>Burger Muncher!!</h1>
 
-<h2>Burger's that are just sitting there, beggining for you to devour them...</h2>
+<h3>Burger's That Haven't Been Devoured</h3>
 
 <ul>
     {{#each burger}}
@@ -17,6 +17,7 @@
 
 <hr>
 
+<h3>Burger's You've Consumed So Far</h3>
 <ul>
     {{#each burger}}
     {{#if devoured}}
@@ -27,12 +28,16 @@
     {{/each}}
 </ul>
 
+<hr>
+
 <h2>Add a Burger</h2>
 <form>
     <label for="burger_name">Burger Name</label>
-    <input type="text" id="burger" name="name">
+    <input type="text" id="burger" name="name"><br>
 
-    <label for="devoured">Devoured?</label>
+    <label for="devoured">Devoured?</label><br>
     <input type="radio" name="devoured" value="1">Devoured!<br>
-    <input type="radio" name="devoured" value="0">Not Devoured..
+    <input type="radio" name="devoured" value="0">Not Devoured..<br>
+
+    <button type="submit">Add Burger</button>
 </form>
