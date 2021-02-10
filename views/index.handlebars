@@ -1,0 +1,38 @@
+<h1>Burger Muncher!!</h1>
+
+<h2>Burger's that are just sitting there, beggining for you to devour them...</h2>
+
+<ul>
+    {{#each burger}}
+    {{#unless devoured}}
+    <li>
+        {{burger_name}}
+        <button data-id="{{id}}" data-newdevoured="{{devoured}}">
+            DEVOUR!!
+        </button>
+    </li>
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<hr>
+
+<ul>
+    {{#each burger}}
+    {{#if devoured}}
+    <li>
+        {{burger_name}}
+    </li>
+    {{/if}}
+    {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form>
+    <label for="burger_name">Burger Name</label>
+    <input type="text" id="burger" name="name">
+
+    <label for="devoured">Devoured?</label>
+    <input type="radio" name="devoured" value="1">Devoured!<br>
+    <input type="radio" name="devoured" value="0">Not Devoured..
+</form>

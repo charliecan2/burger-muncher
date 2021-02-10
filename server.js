@@ -8,3 +8,18 @@ app.use(express.static('public'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Set up routes here later
+
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+const routes = require('./controllers/burgers_controller');
+
+app.use(routes);
+
+app.connect(PORT, () => {
+    console.log(`Listening in on PORT: ${PORT}`);
+})
