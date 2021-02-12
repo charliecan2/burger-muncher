@@ -10,18 +10,18 @@ const orm = {
         })
     },
     // insertOne should be fine...I think?
-    insertOne(tableInput, vals, cb){
+    insertOne(tableInput, burgerName, cb){
         let queryString = `INSERT INTO ${tableInput}`;
 
-        queryString += ' (burger_name, devoured) VALUES (';
-        queryString += printQuestionMarks(vals.length);
-        queryString += ') ';
+        queryString += ' (burger_name, devoured)';
+        queryString += 'VALUES (?, false)';
 
-        connection.query(
-            queryString, vals,
-            (err, result) => {
+        console.log(queryString);
+
+        connection.query(queryString, burgerName.toString(), (err, result) => {
                 if (err) throw err;
                 cb(result);
+                console.log('Burger successfully added!');
             }
         )
     },
@@ -29,8 +29,9 @@ const orm = {
     // comment if it's good to go
     updateOne(table, devourVal, condition, cb){
         let queryString = `UPDATE ${table}`;
-        queryString += ' SET ';
-        queryString += objToSql(devourVal);
+        queryString += ' SET devoured=';
+        queryString += devourVal;
+        queryString += " WHERE "
         queryString += condition;
 
         connection.query(

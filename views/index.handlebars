@@ -7,9 +7,10 @@
     {{#unless devoured}}
     <li>
         {{burger_name}}
-        <button data-id="{{id}}" data-newdevoured="{{devoured}}">
+        <button class="devour-burger-btn" data-id="{{id}}" data-newdevoured="{{devoured}}">
             DEVOUR!!
         </button>
+        
     </li>
     {{/unless}}
     {{/each}}
@@ -31,13 +32,8 @@
 <hr>
 
 <h2>Add a Burger</h2>
-<form>
-    <label for="burger_name">Burger Name</label>
+<form action="/api/burgers" method="POST" id="create-form">
+    <label for="burger">Burger Name</label>
     <input type="text" id="burger" name="name"><br>
-
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1">Devoured!<br>
-    <input type="radio" name="devoured" value="0">Not Devoured..<br>
-
     <button type="submit">Add Burger</button>
 </form>
