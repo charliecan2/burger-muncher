@@ -25,11 +25,9 @@ const orm = {
     },
     // updateOne() seems to be good to go. Check back later and delete
     // comment if it's good to go
-    updateOne(table, devourVal, condition, cb){
+    updateOne(table, condition, cb){
         let queryString = `UPDATE ${table}`;
-        queryString += ' SET devoured=';
-        queryString += devourVal;
-        queryString += " WHERE "
+        queryString += ' SET devoured=1 WHERE';
         queryString += condition;
 
         connection.query(
