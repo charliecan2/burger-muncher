@@ -1,7 +1,5 @@
 const connection = require('./connection.js');
 
-connection
-
 const orm = {
     selectAll(tableInput, cb){
         connection.query(`SELECT * FROM ${tableInput}`, (err, result) => {
